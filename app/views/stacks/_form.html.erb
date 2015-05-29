@@ -1,0 +1,49 @@
+<%= form_for(@stack) do |f| %>
+  <% if @stack.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stack.errors.count, "error") %> prohibited this stack from being saved:</h2>
+
+      <ul>
+      <% @stack.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %>
+  </div>
+  <div class="field">
+    <%= f.label :url1 %><br>
+    <%= f.text_field :url1 %>
+  </div>
+  <div class="field">
+    <%= f.label :url2 %><br>
+    <%= f.text_field :url2 %>
+  </div>
+  <div class="field">
+    <%= f.label :url3 %><br>
+    <%= f.text_field :url3 %>
+  </div>
+  <div class="field">
+    <%= f.label :picture1 %><br>
+    <%= f.text_field :picture1 %>
+  </div>
+  <div class="field">
+    <%= f.label :picture2 %><br>
+    <%= f.text_field :picture2 %>
+  </div>
+  <div class="field">
+    <%= f.label :picture3 %><br>
+    <%= f.text_field :picture3 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

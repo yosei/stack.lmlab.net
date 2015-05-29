@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Stacks Tags</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stack</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stacks_tags.each do |stacks_tag| %>
+      <tr>
+        <td><%= stacks_tag.stack_id %></td>
+        <td><%= stacks_tag.name %></td>
+        <td><%= link_to 'Show', stacks_tag %></td>
+        <td><%= link_to 'Edit', edit_stacks_tag_path(stacks_tag) %></td>
+        <td><%= link_to 'Destroy', stacks_tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Stacks tag', new_stacks_tag_path %>

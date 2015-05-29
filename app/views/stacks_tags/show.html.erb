@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Stack:</strong>
+  <%= @stacks_tag.stack_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @stacks_tag.name %>
+</p>
+
+<%= link_to 'Edit', edit_stacks_tag_path(@stacks_tag) %> |
+<%= link_to 'Back', stacks_tags_path %>
