@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+if Rails.env == "development"
+  s1 = Stack.create(title:"xxをyyする方法", problem:"", solution:"", explanation:"")
+  StacksTag.create(stack:s1,name: "ruby")
+  StacksTag.create(stack:s1,name: "rails")
+end

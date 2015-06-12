@@ -2,9 +2,9 @@ class CreateStacks < ActiveRecord::Migration
   def change
     create_table :stacks do |t|
       t.string :title
-      t.string :problem
-      t.string :solution
-      t.string :explanation
+      t.text :problem, limit: 8000
+      t.text :solution, limit: 8000
+      t.text :explanation, limit: 8000
       t.string :url1
       t.string :url2
       t.string :url3
