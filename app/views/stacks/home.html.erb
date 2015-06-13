@@ -1,0 +1,28 @@
+<% content_for :title do %>Home<% end %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <p>
+      <%= @user.email %>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete  %>
+    </p>
+    <table class="table">
+      <tbody>
+        <% @user.stacks.each do |stack| %>
+          <tr>
+            <td>
+              <%= link_to stack.title, stack %><br/>
+              <% stack.stacks_tags.each do |t| %>
+                <%= link_to t.name, "#", class: "label label-default" %>
+              <% end %>
+            </td>
+            <td>
+              編集、削除
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to 'New Stack', new_stack_path, class: "btn btn-primary" %>
+  </div>
+</div>

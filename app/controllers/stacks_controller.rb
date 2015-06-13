@@ -1,5 +1,6 @@
 class StacksController < ApplicationController
   before_action :set_stack, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show, :show_picture]
 
   # GET /stacks
   # GET /stacks.json
@@ -7,9 +8,16 @@ class StacksController < ApplicationController
     @stacks = Stack.all
   end
 
+  def home
+    @user = current_user
+  end
+
   # GET /stacks/1
   # GET /stacks/1.json
   def show
+  end
+
+  def show_picture
   end
 
   # GET /stacks/new

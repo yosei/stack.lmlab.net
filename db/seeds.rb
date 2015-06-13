@@ -8,7 +8,14 @@
 
 
 if Rails.env == "development"
-  s1 = Stack.create(title:"xxをyyする方法", problem:"", solution:"", explanation:"")
+  u = User.create(email: "test@lmlab.net", password: "secret123")
+
+  s1 = Stack.create(title:"xxをyyする方法", problem:"", solution:"", explanation:"",user:u)
   StacksTag.create(stack:s1,name: "ruby")
   StacksTag.create(stack:s1,name: "rails")
+
+  s2 = Stack.create(title:"zzができないときは", problem:"", solution:"", explanation:"",user:u)
+  StacksTag.create(stack:s2,name: "ruby")
+  StacksTag.create(stack:s2,name: "linux")
+
 end
