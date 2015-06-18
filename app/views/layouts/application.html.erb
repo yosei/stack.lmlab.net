@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>StackLmlabNet</title>
+  <title><%= content_for(:title) || "" %> :LM Stacks</title>
   <meta name="description" content=""/>
   <meta name="keywords" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,12 +18,17 @@
 <body>
   <div class="container">
     <%= render 'layouts/navbar' %>
-    <% if notice %>
-    <p class="alert alert-info"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-    <p class="alert alert-warning"><%= alert %></p>
-    <% end %>
+    <div class="row">
+      <div class="col-md-12">
+        <h1><%= content_for(:title) || "無題" %></h1>
+        <% if notice %>
+        <p class="alert alert-info"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+        <p class="alert alert-warning"><%= alert %></p>
+        <% end %>
+      </div>
+    </div>
     <%= yield %>
     <%= render 'layouts/google_ad' %>
     <footer class="footer">

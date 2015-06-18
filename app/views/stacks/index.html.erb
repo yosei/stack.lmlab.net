@@ -1,14 +1,18 @@
 <% content_for :title do %>Stacks<% end %>
 
+<form>
+  タグ指定で絞り込み
+  tag: <%= @tag %>,
+  keyword: <%= @keyword %>
+</form>
+
 <table class="table">
   <tbody>
     <% @stacks.each do |stack| %>
       <tr>
         <td>
           <%= link_to stack.title, stack %><br/>
-          <% stack.stacks_tags.each do |t| %>
-            <%= link_to t.name, "#", class: "label label-default" %>
-          <% end %>
+          <%= tags(stack) %>
         </td>
       </tr>
     <% end %>
