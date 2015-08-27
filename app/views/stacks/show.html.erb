@@ -8,15 +8,15 @@
 <div class="row">
   <div class="col-md-4">
     <h2>課題</h2>
-    <%= @stack.problem %>
+    <%= markdown(@stack.problem) %>
   </div>
   <div class="col-md-4">
     <h2>解決策</h2>
-    <%= @stack.solution %>
+    <%= markdown(@stack.solution) %>
   </div>
   <div class="col-md-4">
     <h2>解説</h2>
-    <%= @stack.explanation %>
+    <%= markdown(@stack.explanation) %>
     <ul>
       <% if @stack.url1 %>
       <li><%= @stack.url1 %></li>
