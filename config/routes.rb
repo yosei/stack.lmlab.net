@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root to: 'stacks#index'
 
   get 'home' => 'stacks#home', as: :home
+  get 'stacks/:id/:n' => 'stacks#show_picture'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,5 +1,5 @@
 class StacksController < ApplicationController
-  before_action :set_stack, only: [:show, :edit, :update, :destroy]
+  before_action :set_stack, only: [:show, :show_picture, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show, :show_picture]
 
   # GET /stacks
@@ -18,6 +18,18 @@ class StacksController < ApplicationController
   end
 
   def show_picture
+    n = params[:n]
+    if ["1","2","3"].include? n
+      d = @stack["picture"+n]
+      if d
+        send_data d, :type => 'image/png', :disposition => "inline"
+      else
+        raise ActionController::RoutingError.new('Not found: picture'+n.to_s)
+      end
+    else
+      raise ActionController::RoutingError.new('Invalid param n:'+n.to_s)
+    end
+
   end
 
   # GET /stacks/new

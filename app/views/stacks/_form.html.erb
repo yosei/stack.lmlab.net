@@ -42,15 +42,18 @@
   </div>
   <div class="form-group">
     <%= f.label :picture1 %>
-    <%= f.text_field :picture1, class: "form-control" %>
+    <%= f.file_field :picture1, class: "form-control" %>
+    <small>PNG only</small>
   </div>
   <div class="form-group">
     <%= f.label :picture2 %>
-    <%= f.text_field :picture2, class: "form-control" %>
+    <%= f.file_field :picture2, class: "form-control" %>
+    <small>PNG only</small>
   </div>
   <div class="form-group">
     <%= f.label :picture3 %>
-    <%= f.text_field :picture3, class: "form-control" %>
+    <%= f.file_field :picture3, class: "form-control" %>
+    <small>PNG only</small>
   </div>
   <div class="actions">
     <%= f.submit content_for(:submit_button), class: "btn btn-primary" %>
