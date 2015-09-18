@@ -33,7 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'devise', '~> 3.4.1'
-gem 'kaminari', '~> 0.15.1'
+gem 'kaminari', '~> 0.16.3'
 gem 'redcarpet', '~> 3.3.2'
 
 group :development, :test do
