@@ -1,11 +1,15 @@
 <% content_for :title do %>Stacks<% end %>
 
 <form>
-  タグ指定で絞り込み
-  tag: <%= @tag %>,
-  keyword: <%= @keyword %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      タグ指定で絞り込み
+      tag: <%= @tag %>,
+      keyword: <%= @keyword %>
+    </div>
+  </div>
 </form>
-
+<%= paginate @stacks %>
 <table class="table">
   <tbody>
     <% @stacks.each do |stack| %>
@@ -18,3 +22,4 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @stacks %>
