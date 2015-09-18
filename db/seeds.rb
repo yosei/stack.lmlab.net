@@ -40,12 +40,24 @@ e1 = <<EOT
 - 箇条書き3
 EOT
 
+  p1 = "#{Rails.root}/db/seeds_images/1.png"
+  p2 = "#{Rails.root}/db/seeds_images/2.png"
+  p3 = "#{Rails.root}/db/seeds_images/3.png"
+
   s1 = Stack.create(title:"レギュレーション", problem:p1, solution:s1, explanation:e1,user:u)
+  s1.picture1 = File.read(p1)
+  s1.picture2 = File.read(p2)
+  s1.picture3 = File.read(p3)
   StacksTag.create(stack:s1,name: "ruby")
   StacksTag.create(stack:s1,name: "rails")
 
   s2 = Stack.create(title:"zzができないときは", problem:"", solution:"", explanation:"",user:u)
   StacksTag.create(stack:s2,name: "ruby")
   StacksTag.create(stack:s2,name: "linux")
+
+  30.times do |i|
+    s = Stack.create(title:"#{i} + #{i} は", problem:"", solution:"", explanation:"",user:u)
+    StacksTag.create(stack:s,name: "linux") if i % 2 == 0
+  end
 
 end
