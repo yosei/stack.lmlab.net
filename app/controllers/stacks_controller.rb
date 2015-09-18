@@ -5,7 +5,8 @@ class StacksController < ApplicationController
   # GET /stacks
   # GET /stacks.json
   def index
-    @stacks = Stack.all
+    @q = Stack.search(params[:q])
+    @stacks = @q.result.page(params[:page])
   end
 
   def home
