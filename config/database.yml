@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: stack_lmlab_net_production
-  username: stack_lmlab_net
-  password: <%= ENV['STACK_LMLAB_NET_DATABASE_PASSWORD'] %>
+  #username: stack_lmlab_net
+  #password: <%= ENV['STACK_LMLAB_NET_DATABASE_PASSWORD'] %>

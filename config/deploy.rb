@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'stack.lmlab.net'
-set :repo_url, 'git@bitbucket.org:yosei/stack.lmlab.net.git'
+set :repo_url, 'https://github.com/yosei/stack.lmlab.net.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
