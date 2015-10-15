@@ -46,6 +46,7 @@ class StacksController < ApplicationController
   # POST /stacks.json
   def create
     @stack = Stack.new(stack_params)
+    binding.pry
 
     respond_to do |format|
       if @stack.save
@@ -90,6 +91,6 @@ class StacksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stack_params
-      params.require(:stack).permit(:title, :content, :url1, :url2, :url3, :picture1, :picture2, :picture3)
+      params.require(:stack).permit(:title, :problem, :solution, :explanation, :url1, :url2, :url3, :picture1, :picture2, :picture3)
     end
 end
