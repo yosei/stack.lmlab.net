@@ -1,11 +1,10 @@
 <% content_for :title do %>Stacks<% end %>
 
-<form>
+<form class="form-inline">
   <div class="panel panel-default">
     <div class="panel-body">
-      タグ指定で絞り込み
-      tag: <%= @tag %>,
-      keyword: <%= @keyword %>
+      <%= text_field_tag 'q', @q, class: "form-control" %>
+      <button class="btn btn-default">検索</button>
     </div>
   </div>
 </form>

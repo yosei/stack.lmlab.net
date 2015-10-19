@@ -4,7 +4,7 @@ module StacksHelper
   def tags(stack)
     ts = []
     stack.stacks_tags.each do |t|
-      ts += [link_to(t.name, "#", class: "label label-default")]
+      ts += [link_to(t.name, root_path(q: "tag:"+t.name), class: "label label-default")]
     end
     html = ts.join(" ")
     return html.html_safe

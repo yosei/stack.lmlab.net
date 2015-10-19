@@ -5,8 +5,15 @@ class StacksController < ApplicationController
   # GET /stacks
   # GET /stacks.json
   def index
-    @q = Stack.search(params[:q])
-    @stacks = @q.result.page(params[:page])
+    @q = params[:q] || ""
+    tags, keywords = parse_params(@q)
+    res = Stack.search({title_cont_all: keywords,stacks_tags_name_eq_all: tags}).result
+    logger.debug("***************")
+    logger.debug(tags)
+    logger.debug(keywords)
+    logger.debug(res.to_sql)
+    logger.debug("***************")
+    @stacks = res.page(params[:page])
   end
 
   def home
@@ -92,5 +99,19 @@ class StacksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def stack_params
       params.require(:stack).permit(:title, :problem, :solution, :explanation, :url1, :url2, :url3, :picture1, :picture2, :picture3)
+    end
+
+    def parse_params(q)
+      tags = []
+      keywords = []
+      q.split(" ").each do |f|
+        v = f.split(/[:,]/)
+        if v.length == 1
+          keywords += [v[0]]
+        elsif v[0] == "tag"
+          tags += v[1,v.length-1]
+        end
+      end
+      return [tags,keywords]
     end
 end
