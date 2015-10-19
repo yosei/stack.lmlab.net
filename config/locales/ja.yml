@@ -201,6 +201,7 @@ ja:
       user:
         email: "メールアドレス"
         password: "パスワード"
+        password_confirmation: "パスワード確認"
       member:
         store_id: "店番号"
         member_id: "会員No."
@@ -212,3 +213,10 @@ ja:
               blank: "が入力されていません。"
             password:
               blank: "パスワードが入力されていません。"
+  views:
+    pagination:
+      first: "最初"
+      last: "最後"
+      previous: "前"
+      next: "次"
+      truncate: "..."
