@@ -60,7 +60,7 @@ EOT
   StacksTag.create(stack:s2,name: "ruby")
   StacksTag.create(stack:s2,name: "linux")
 
-  30.times do |i|
+  60.times do |i|
     s = Stack.create(title:"#{i} + #{i} は", problem:"", solution:"", explanation:"",user:u)
     StacksTag.create(stack:s,name: "linux") if i % 2 == 0
   end

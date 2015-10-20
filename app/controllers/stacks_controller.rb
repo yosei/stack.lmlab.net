@@ -2,6 +2,8 @@ class StacksController < ApplicationController
   before_action :set_stack, only: [:show, :show_picture, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show, :show_picture]
 
+  require 'tempfile'
+
   # GET /stacks
   # GET /stacks.json
   def index
@@ -37,7 +39,49 @@ class StacksController < ApplicationController
     else
       raise ActionController::RoutingError.new('Invalid param n:'+n.to_s)
     end
+  end
 
+  def download
+    @stacks_count = Stack.maximum('id')
+    fname = 'download.txt'
+    io = Tempfile.new(fname)
+
+    begin
+      for count in 1..@stacks_count do
+        begin
+          @stack = Stack.find(count)
+          io.print "Id : "
+          io.puts @stack.id
+          io.print "Title : "
+          io.puts @stack.title
+          io.puts "Problem :"
+          io.puts @stack.problem
+          io.puts "Solution :"
+          io.puts @stack.solution
+          io.puts "Explanation :"
+          io.puts @stack.explanation
+          io.print "url1 : "
+          io.puts @stack.url1
+          io.print "url2 : "
+          io.puts @stack.url2
+          io.print "url3 : "
+          io.puts @stack.url3
+          io.print "created_at : "
+          io.puts @stack.created_at
+          io.print "updated_at : "
+          io.puts @stack.updated_at
+          io.puts "----------------------------------------"
+        end
+      end
+
+      io.rewind
+      send_data(io.read, :filename => fname)
+    rescue
+      raise ActionController::RoutingError.new('Download error.')
+    ensure
+      io.close
+      io.unlink
+    end
   end
 
   # GET /stacks/new

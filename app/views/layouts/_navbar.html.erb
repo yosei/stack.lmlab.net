@@ -14,6 +14,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<% if user_signed_in? %>
 					<li><%= link_to "<span class='glyphicon glyphicon-home'></span>".html_safe, home_path %></li>
+					<li><%= link_to "<span class='glyphicon glyphicon-download-alt'></span>".html_safe, download_path %></li>
 				<% else %>
 					<li><%= link_to 'ユーザ登録', new_user_registration_path %></li>
 					<li><%= link_to 'ログイン', home_path %></li>
