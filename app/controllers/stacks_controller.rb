@@ -27,6 +27,19 @@ class StacksController < ApplicationController
   def show
   end
 
+  def stack_show
+    @stack_show = Stack.find(params[:id])
+    respond_to do |format|
+      if @stack_show.updated_at < Date.current.prev_year
+          format.html { redirect_to @stack_show, alert: 'この記事は最終更新日から1年以上経過しています' }
+          format.json { render :show, status: :ok, location: @stack_show }
+      else
+        format.html { redirect_to @stack_show}
+        format.json { render :show, status: :ok, location: @stack_show }
+      end
+    end
+  end
+
   def show_picture
     n = params[:n]
     if ["1","2","3"].include? n
@@ -49,27 +62,27 @@ class StacksController < ApplicationController
     begin
       for count in 1..@stacks_count do
         begin
-          @stack = Stack.find(count)
+          @stack_txt = Stack.find(count)
           io.print "Id : "
-          io.puts @stack.id
+          io.puts @stack_txt.id
           io.print "Title : "
-          io.puts @stack.title
+          io.puts @stack_txt.title
           io.puts "Problem :"
-          io.puts @stack.problem
+          io.puts @stack_txt.problem
           io.puts "Solution :"
-          io.puts @stack.solution
+          io.puts @stack_txt.solution
           io.puts "Explanation :"
-          io.puts @stack.explanation
+          io.puts @stack_txt.explanation
           io.print "url1 : "
-          io.puts @stack.url1
+          io.puts @stack_txt.url1
           io.print "url2 : "
-          io.puts @stack.url2
+          io.puts @stack_txt.url2
           io.print "url3 : "
-          io.puts @stack.url3
+          io.puts @stack_txt.url3
           io.print "created_at : "
-          io.puts @stack.created_at
+          io.puts @stack_txt.created_at
           io.print "updated_at : "
-          io.puts @stack.updated_at
+          io.puts @stack_txt.updated_at
           io.puts "----------------------------------------"
         end
       end
