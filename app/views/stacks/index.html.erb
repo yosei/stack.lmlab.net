@@ -14,7 +14,7 @@
     <% @stacks.each do |stack| %>
       <tr>
         <td>
-          <%= link_to stack.title, 'stack_show/' + stack.id.to_s %><br/>
+          <%= link_to stack.title, stack %><br/>
           <%= tags(stack) %>
         </td>
       </tr>

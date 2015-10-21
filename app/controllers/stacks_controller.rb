@@ -25,18 +25,9 @@ class StacksController < ApplicationController
   # GET /stacks/1
   # GET /stacks/1.json
   def show
-  end
-
-  def stack_show
     @stack_show = Stack.find(params[:id])
-    respond_to do |format|
-      if @stack_show.updated_at < Date.current.prev_year
-          format.html { redirect_to @stack_show, alert: 'この記事は最終更新日から1年以上経過しています' }
-          format.json { render :show, status: :ok, location: @stack_show }
-      else
-        format.html { redirect_to @stack_show}
-        format.json { render :show, status: :ok, location: @stack_show }
-      end
+    if @stack_show.updated_at < Date.current.prev_year
+      flash.now[:alert] = 'この記事は最終更新日から1年以上が経過しています'
     end
   end
 

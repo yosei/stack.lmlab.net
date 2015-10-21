@@ -60,6 +60,9 @@ EOT
   StacksTag.create(stack:s2,name: "ruby")
   StacksTag.create(stack:s2,name: "linux")
 
+  s3 = Stack.create(title:"更新日が1年前", problem:"", solution:"", explanation:"", user:u, updated_at:"2014-10-10 09:00:00")
+  StacksTag.create(stack:s2,name: "linux")
+
   60.times do |i|
     s = Stack.create(title:"#{i} + #{i} は", problem:"", solution:"", explanation:"",user:u)
     StacksTag.create(stack:s,name: "linux") if i % 2 == 0
