@@ -38,6 +38,8 @@ gem 'kaminari', '~> 0.16.3'
 gem 'redcarpet', '~> 3.3.2'
 gem 'ransack', '~> 1.7.0'
 
+gem 'diffy'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

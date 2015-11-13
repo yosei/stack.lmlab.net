@@ -101,7 +101,6 @@ class StacksController < ApplicationController
   # POST /stacks.json
   def create
     @stack = Stack.new(stack_params)
-    binding.pry
 
     respond_to do |format|
       if @stack.save

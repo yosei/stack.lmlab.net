@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'home' => 'stacks#home', as: :home
   get 'stacks/:id/:n' => 'stacks#show_picture'
   get 'download' => 'stacks#download', as: :download
+  get 'diff/:id/:column' => 'history#show_diff', as: :diff
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
