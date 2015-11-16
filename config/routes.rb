@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'download' => 'stacks#download', as: :download
 
   get 'history/:id' => 'history#index', as: :history
-  get 'history/:id/:column' => 'history#show_diff', as: :diff
+  get 'history/:id/:num' => 'history#diff', as: :diff
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

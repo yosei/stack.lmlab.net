@@ -1,4 +1,4 @@
-<% content_for :title do %>Stacks<% end %>
+<% content_for :title do %><%= @stack.title %>更新履歴<% end %>
 
 <form class="form-inline">
   <div class="panel panel-default">
@@ -10,12 +10,22 @@
 </form>
 <%= paginate @history %>
 <table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>タイトル</th>
+      <th>更新日</th>
+    </tr>
+  </thead>
   <tbody>
-    <% @history.each do |history| %>
+    <% @history.each_with_index do |history, index| %>
       <tr>
-        <td>
-          <%= link_to history, "history" %><br/>
-        </td>
+        <% if index == @count %>
+        <% else %>
+          <td width="30px"><%= @count - index %></td>
+          <td><%= link_to history.title, "#{history_path}/#{index}" %></td>
+          <td><%= history.updated_at.to_s.delete("UTC") %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

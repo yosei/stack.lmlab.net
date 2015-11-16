@@ -1,42 +1,65 @@
-<% content_for :title do %><%= @stack.title %><% end %>
+<% content_for :title do %><%= @origin.title %><% end %>
 <div class="row">
   <div class="col-md-4">
-    <%= tags(@stack) %>
+    <%= tags(@origin) %>
   </div>
 </div>
 
 <div class="row stack">
   <div class="col-md-4">
     <h2>課題</h2>
-    <%= markdown(@stack.problem) %>
+    <%= markdown(@problem) %>
   </div>
   <div class="col-md-4">
     <h2>解決策</h2>
-    <%= markdown(@stack.solution) %>
+    <%= markdown(@solution) %>
   </div>
   <div class="col-md-4">
     <h2>解説</h2>
-    <%= markdown(@stack.explanation) %>
-    <ul>
-      <% if @stack.url1 %>
-      <li><%= @stack.url1 %></li>
+    <%= markdown(@explanation) %>
+  </div>
+
+</div>
+<div class="row stack">
+  <div class="col-md-4">
+    <h2>URL</h2>
+    <div><h4>URL1</h4>
+      <% if @url1 %>
+        <%= @url1 %>
       <% end %>
-      <% if @stack.url2 %>
-      <li><%= @stack.url2 %></li>
+    </div>
+    <div><h4>URL2</h4>
+      <% if @url2 %>
+        <%= @url2 %>
       <% end %>
-      <% if @stack.url3 %>
-      <li><%= @stack.url3 %></li>
+    </div>
+    <div><h4>URL3</h4>
+      <% if @url3 %>
+        <%= @url3 %>
       <% end %>
-    </ul>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h2>画像</h2>
+    <dev><h4>picture1</h4>
+      <% if @picture1 %>
+        <%= @picture1 %>
+      <% end %>
+    </dev>
+    <dev><h4>picture2</h4>
+      <% if @picture2 %>
+        <%= @picture2 %>
+      <% end %>
+    </dev>
+    <dev><h4>picture3</h4>
+      <% if @picture3 %>
+      <%= @picture3 %>
+      <% end %>
+    </dev>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12">
-    <% if current_user %>
-      <%= link_to '編集', edit_stack_path(@stack),class: "btn btn-default" %>
-    <% else %>
-      <%= link_to '<span class="glyphicon glyphicon-lock"></span> 編集'.html_safe, edit_stack_path(@stack),class: "btn btn-default" %>
-    <% end %>
     <%= link_to '<span class="glyphicon glyphicon-th-list"></span> 一覧に戻る'.html_safe, stacks_path, class: "btn btn-default" %>
     <%= link_to '編集履歴', history_path, class: "btn btn-default" %>
   </div>
