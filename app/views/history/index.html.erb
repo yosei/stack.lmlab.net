@@ -1,0 +1,23 @@
+<% content_for :title do %>Stacks<% end %>
+
+<form class="form-inline">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= text_field_tag 'q', @q, class: "form-control text_field" %>
+      <button class="btn btn-default">検索</button>
+    </div>
+  </div>
+</form>
+<%= paginate @history %>
+<table class="table">
+  <tbody>
+    <% @history.each do |history| %>
+      <tr>
+        <td>
+          <%= link_to history, "history" %><br/>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @history %>
