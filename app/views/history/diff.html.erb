@@ -25,17 +25,17 @@
     <h2>URL</h2>
     <div><h4>URL1</h4>
       <% if @url1 %>
-        <%= @url1 %>
+        <%= @url1.html_safe %>
       <% end %>
     </div>
     <div><h4>URL2</h4>
       <% if @url2 %>
-        <%= @url2 %>
+        <%= @url2.html_safe %>
       <% end %>
     </div>
     <div><h4>URL3</h4>
       <% if @url3 %>
-        <%= @url3 %>
+        <%= @url3.html_safe %>
       <% end %>
     </div>
   </div>

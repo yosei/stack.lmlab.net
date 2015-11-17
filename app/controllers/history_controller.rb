@@ -62,15 +62,15 @@ class HistoryController < ApplicationController
       @explanation = diff_text(text, after_data.explanation, "text")
       #url
       text = Diffy::Diff.new("", after_data.url1).to_s(:html_simple)
-      @url1 = diff_text(text, after_data.url1, "url").html_safe
+      @url1 = diff_text(text, after_data.url1, "url")
       text = Diffy::Diff.new("", after_data.url2).to_s(:html_simple)
-      @url2 = diff_text(text, after_data.url2, "url").html_safe
+      @url2 = diff_text(text, after_data.url2, "url")
       text = Diffy::Diff.new("", after_data.url3).to_s(:html_simple)
-      @url3 = diff_text(text, after_data.url3, "url").html_safe
+      @url3 = diff_text(text, after_data.url3, "url")
       #picture
-      @picture1 = diff_pic("", after_data.picture1)
-      @picture2 = diff_pic("", after_data.picture2)
-      @picture3 = diff_pic("", after_data.picture3)
+      @picture1 = diff_pic("", after_data.picture1).html_safe
+      @picture2 = diff_pic("", after_data.picture2).html_safe
+      @picture3 = diff_pic("", after_data.picture3).html_safe
     end
   end
 
@@ -87,12 +87,23 @@ class HistoryController < ApplicationController
         text = "<div class='diff'>#{data}</div>"
       end
     else
-      text = text.gsub('<ul>', '<table>')
-      text = text.gsub('</ul>', '</table>')
-      text = text.gsub('<li', '<tr><td>　</td><td')
-      text = text.gsub('</li>', '</td></tr>')
-      text = text.gsub('<tr><td>　</td><td class="del">', '<tr class="del"><td>-</td><td>')
-      text = text.gsub('<tr><td>　</td><td class="ins">', '<tr class="ins"><td>+</td><td>')
+      # text = text.gsub('<ul>', '<table>')
+      # text = text.gsub('</ul>', '</table>')
+      # text = text.gsub('<li', '<tr><td>　</td><td')
+      # text = text.gsub('</li>', '</td></tr>')
+      # text = text.gsub('<tr><td>　</td><td class="del">', '<tr class="del"><td>-</td><td>')
+      # text = text.gsub('<tr><td>　</td><td class="ins">', '<tr class="ins"><td>+</td><td>')
+      # text = text.gsub('<del>', '')
+      # text = text.gsub('</del>', '')
+      # text = text.gsub('<ins>', '')
+      # text = text.gsub('</ins>', '')
+
+      text = text.gsub('<ul>', '')
+      text = text.gsub('</ul>', '')
+      text = text.gsub('<li', '<div')
+      text = text.gsub('</li', '</div')
+      text = text.gsub('<div class="del">', '<div class="del"><span>-</span><td>')
+      text = text.gsub('<div class="ins">', '<div class="ins"><span>+</span><td>')
       text = text.gsub('<del>', '')
       text = text.gsub('</del>', '')
       text = text.gsub('<ins>', '')
@@ -104,7 +115,9 @@ class HistoryController < ApplicationController
   def diff_pic(befor_pic, after_pic)
     text = ""
     if befor_pic != after_pic
-      text = "画像が変更されました。"
+      if befor_pic != nil
+        text = "<div class='ins'>画像が変更されました。</div>"
+      end
     end
     return text
   end
