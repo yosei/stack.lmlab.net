@@ -1,4 +1,4 @@
-<% content_for :title do %><%= @origin.title %><% end %>
+<% content_for :title do %><%= @title.html_safe %><% end %>
 <div class="row">
   <div class="col-md-4">
     <%= tags(@origin) %>
