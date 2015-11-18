@@ -1,22 +1,27 @@
 <% content_for :title do %><%= @stack.title %>更新履歴<% end %>
-
-<%= paginate @history %>
-<table class="table">
-  <thead>
-    <tr>
-      <th width="30px">ID</th>
-      <th>タイトル</th>
-      <th>更新日</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @history.each_with_index do |history, index| %>
+<div>
+  <%= paginate @history %>
+  <table class="table">
+    <thead>
       <tr>
-          <td><%= @count - index %></td>
-          <td><%= link_to history.title, "#{history_path}/#{index}" %></td>
-          <td><%= history.updated_at.to_s.delete("UTC") %></td>
+        <th width="30px">ID</th>
+        <th>タイトル</th>
+        <th>更新日</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= paginate @history %>
+    </thead>
+    <tbody>
+      <% @history.each_with_index do |history, index| %>
+        <tr>
+            <td><%= @count - index %></td>
+            <td><%= link_to history.title, "#{history_path}/#{index}" %></td>
+            <td><%= history.updated_at.to_s.delete("UTC") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @history %>
+</div>
+<div>
+  <%= link_to '<span class="glyphicon glyphicon-th-list"></span> 一覧に戻る'.html_safe, stacks_path, class: "btn btn-default" %>
+  <%= link_to '戻る', :back, class: "btn btn-default" %>
+</div>

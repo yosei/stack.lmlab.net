@@ -61,6 +61,7 @@
 <div class="row">
   <div class="col-md-12">
     <%= link_to '<span class="glyphicon glyphicon-th-list"></span> 一覧に戻る'.html_safe, stacks_path, class: "btn btn-default" %>
-    <%= link_to '編集履歴', history_path, class: "btn btn-default" %>
+    <%= link_to '最新の内容に戻る', "/stacks/#{params[:id]}", class: "btn btn-default" %>
+    <%= link_to '編集履歴に戻る', history_path, class: "btn btn-default" %>
   </div>
 </div>
