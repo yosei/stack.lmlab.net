@@ -8,6 +8,8 @@ class HistoryController < ApplicationController
     stack_version.reverse.each do |sv|
       array << sv.reify
     end
+    #配列の最後の要素はいらないため削除
+    array.pop
     @history = Kaminari.paginate_array(array).page(params[:page])
   end
 

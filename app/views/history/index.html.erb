@@ -4,7 +4,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>ID</th>
+      <th width="30px">ID</th>
       <th>タイトル</th>
       <th>更新日</th>
     </tr>
@@ -12,12 +12,9 @@
   <tbody>
     <% @history.each_with_index do |history, index| %>
       <tr>
-        <% if index == @count %>
-        <% else %>
-          <td width="30px"><%= @count - index %></td>
+          <td><%= @count - index %></td>
           <td><%= link_to history.title, "#{history_path}/#{index}" %></td>
           <td><%= history.updated_at.to_s.delete("UTC") %></td>
-        <% end %>
       </tr>
     <% end %>
   </tbody>
