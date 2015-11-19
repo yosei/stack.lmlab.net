@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   root to: 'stacks#index'
 
+  get 'stacks/:id/destroy' => 'stacks#destroy'
+
   get 'home' => 'stacks#home', as: :home
   get 'stacks/:id/:n' => 'stacks#show_picture'
   get 'download' => 'stacks#download', as: :download

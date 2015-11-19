@@ -17,7 +17,8 @@
               <% end %>
             </td>
             <td>
-              編集、削除
+              <%= link_to '編集', "/stacks/#{stack.id}/edit", class: "btn btn-default" %>
+              <%= link_to '削除', "/stacks/#{stack.id}/destroy", class: "btn btn-default" %>
             </td>
           </tr>
         <% end %>
