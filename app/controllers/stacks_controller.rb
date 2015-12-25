@@ -49,11 +49,14 @@ class StacksController < ApplicationController
     @stacks_count = Stack.maximum('id')
     fname = 'download.txt'
     io = Tempfile.new(fname)
+    io.puts "Stacks"
 
     begin
       for count in 1..@stacks_count do
         begin
           @stack_txt = Stack.find(count)
+        rescue
+        else
           io.print "Id : "
           io.puts @stack_txt.id
           io.print "Title : "
