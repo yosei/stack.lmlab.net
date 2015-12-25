@@ -48,46 +48,50 @@ class StacksController < ApplicationController
   def download
     @stacks_count = Stack.maximum('id')
     fname = 'download.txt'
-    io = Tempfile.new(fname)
-    io.puts "Stacks"
 
-    begin
-      for count in 1..@stacks_count do
-        begin
-          @stack_txt = Stack.find(count)
-        rescue
-        else
-          io.print "Id : "
-          io.puts @stack_txt.id
-          io.print "Title : "
-          io.puts @stack_txt.title
-          io.puts "Problem :"
-          io.puts @stack_txt.problem
-          io.puts "Solution :"
-          io.puts @stack_txt.solution
-          io.puts "Explanation :"
-          io.puts @stack_txt.explanation
-          io.print "url1 : "
-          io.puts @stack_txt.url1
-          io.print "url2 : "
-          io.puts @stack_txt.url2
-          io.print "url3 : "
-          io.puts @stack_txt.url3
-          io.print "created_at : "
-          io.puts @stack_txt.created_at
-          io.print "updated_at : "
-          io.puts @stack_txt.updated_at
-          io.puts "----------------------------------------"
+    if(@stacks_count)
+      begin
+        io = Tempfile.new(fname)
+        io.puts "Stacks"
+
+        for count in 1..@stacks_count do
+          begin
+            @stack_txt = Stack.find(count)
+          rescue
+          else
+            io.print "Id : "
+            io.puts @stack_txt.id
+            io.print "Title : "
+            io.puts @stack_txt.title
+            io.puts "Problem :"
+            io.puts @stack_txt.problem
+            io.puts "Solution :"
+            io.puts @stack_txt.solution
+            io.puts "Explanation :"
+            io.puts @stack_txt.explanation
+            io.print "url1 : "
+            io.puts @stack_txt.url1
+            io.print "url2 : "
+            io.puts @stack_txt.url2
+            io.print "url3 : "
+            io.puts @stack_txt.url3
+            io.print "created_at : "
+            io.puts @stack_txt.created_at
+            io.print "updated_at : "
+            io.puts @stack_txt.updated_at
+            io.puts "----------------------------------------"
+          end
         end
-      end
 
-      io.rewind
-      send_data(io.read, :filename => fname)
-    rescue
-      raise ActionController::RoutingError.new('Download error.')
-    ensure
-      io.close
-      io.unlink
+        io.rewind
+        send_data(io.read, :filename => fname)
+      ensure
+        io.close
+        io.unlink
+      end
+    else
+      # stacksが0の場合
+      redirect_to :back, notice: '記事が存在しないため、ダウンロードできません。'
     end
   end
 
