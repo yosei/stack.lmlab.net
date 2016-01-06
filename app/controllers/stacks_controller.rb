@@ -91,13 +91,14 @@ class StacksController < ApplicationController
       end
     else
       # stacksが0の場合
-      redirect_to :back, notice: '記事が存在しないため、ダウンロードできません。'
+      redirect_to :back, status: '記事が存在しないため、ダウンロードできません。'
     end
   end
 
   # GET /stacks/new
   def new
     @stack = Stack.new
+    @user = user_session
   end
 
   # GET /stacks/1/edit

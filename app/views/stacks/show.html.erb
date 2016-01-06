@@ -18,14 +18,14 @@
     <h2>解説</h2>
     <%= markdown(@stack.explanation) %>
     <ul>
-      <% if @stack.url1 %>
-      <li><%= @stack.url1 %></li>
+      <% unless @stack.url1 == "" %>
+      <li><%= link_to @stack.url1, @stack.url1 %></li>
       <% end %>
-      <% if @stack.url2 %>
-      <li><%= @stack.url2 %></li>
+      <% unless @stack.url2 == "" %>
+      <li><%= link_to @stack.url2, @stack.url2 %></li>
       <% end %>
-      <% if @stack.url3 %>
-      <li><%= @stack.url3 %></li>
+      <% unless @stack.url3 == "" %>
+      <li><%= link_to @stack.url3, @stack.url3 %></li>
       <% end %>
     </ul>
   </div>
