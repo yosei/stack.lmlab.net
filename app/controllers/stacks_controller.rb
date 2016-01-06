@@ -109,7 +109,7 @@ class StacksController < ApplicationController
   # POST /stacks.json
   def create
     @stack = Stack.new(stack_params)
-
+    @stack.user = current_user
     respond_to do |format|
       if @stack.save
         format.html { redirect_to @stack, notice: 'Stack was successfully created.' }
@@ -143,6 +143,9 @@ class StacksController < ApplicationController
       format.html { redirect_to home_path, notice: 'Stack was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def about
   end
 
   private

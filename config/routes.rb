@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'home' => 'stacks#home', as: :home
   get 'stacks/:id/:n' => 'stacks#show_picture'
   get 'download' => 'stacks#download', as: :download
+  get 'about' => 'stacks#about', as: :about
 
   get 'history/:id' => 'history#index', as: :history
   get 'history/:id/:num' => 'history#diff', as: :diff
